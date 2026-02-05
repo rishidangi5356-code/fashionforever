@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Forever | Mobile Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="sidebar-menu" class="sidebar">
+    <div class="sidebar-header">
+        <span class="brand-top">MENU</span>
+        <button id="close-btn" class="close-icon"><i class="fas fa-times"></i></button>
+    </div>
+    
+    <ul class="sidebar-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="shop.html">SHOP ALL</a></li>
+        
+        <li class="dropdown-li">
+            <div class="dropdown-header">
+                <span>MEN’S</span>
+                <i class="fas fa-chevron-down arrow"></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a href="shop.html?category=men&type=top-wear">Top Wear</a></li>
+                <li><a href="shop.html?category=men&type=bottom-wear">Bottom Wear</a></li>
+                <li><a href="shop.html?category=men&type=ethnic-wear">Ethnic Wear</a></li>
+                <li><a href="shop.html?category=men&type=sports-wear">Sports Wear</a></li>
+                <li><a href="shop.html?category=men&type=accessories">Accessories</a></li>
+                <li><a href="shop.html?category=men&type=footwear">Bags & Footwear</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown-li">
+            <div class="dropdown-header">
+                <span>WOMEN’S</span>
+                <i class="fas fa-chevron-down arrow"></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a href="shop.html?category=women&type=top-wear">Top Wear</a></li>
+                <li><a href="shop.html?category=women&type=bottom-wear">Bottom Wear</a></li>
+                <li><a href="shop.html?category=women&type=ethnic-wear">Ethnic Wear</a></li>
+                <li><a href="shop.html?category=women&type=sports-wear">Sports Wear</a></li>
+                <li><a href="shop.html?category=women&type=accessories">Accessories</a></li>
+                <li><a href="shop.html?category=women&type=footwear">Bags & Footwear</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown-li">
+            <div class="dropdown-header">
+                <span>KID’S</span>
+                <i class="fas fa-chevron-down arrow"></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a href="shop.html?category=kids&type=top-wear">Top Wear</a></li>
+                <li><a href="shop.html?category=kids&type=bottom-wear">Bottom Wear</a></li>
+                <li><a href="shop.html?category=kids&type=ethnic-wear">Ethnic Wear</a></li>
+                <li><a href="shop.html?category=kids&type=sports-wear">Sports Wear</a></li>
+                <li><a href="shop.html?category=kids&type=accessories">Accessories</a></li>
+                <li><a href="shop.html?category=kids&type=footwear">Bags & Footwear</a></li>
+            </ul>
+        </li>
+        
+        <li><a href="shop.html?type=accessories">ACCESSORIES (ALL)</a></li>
+        <li><a href="orders.html">MY ORDERS</a></li>
+        <li><a href="profile.html">PROFILE</a></li>
+        <li><a href="about.html">ABOUT US</a></li>
+        <li><a href="contact.html">CONTACT US</a></li>
+    </ul>
+</div>
+
+<header id="main-header">
+    
+    <div class="marquee-strip">
+        <p>NEW ARRIVALS LIVE — FREE SHIPPING ON ORDERS OVER ₹2500 — CONTACT: +91 8839697440</p>
+    </div>
+
+    <div class="navbar">
+        
+        <div class="nav-left">
+            <i class="fas fa-bars" id="hamburger-btn"></i>
+            <a href="index.html" class="logo-link">
+                <span class="brand-top">FASHION</span>
+                <span class="brand-bottom">FOREVER</span>
+            </a>
+        </div>
+
+        <div class="nav-center-desktop">
+            <ul class="desktop-links">
+                <li><a href="index.html">HOME</a></li>
+                
+                <li><a href="shop.html">SHOP</a></li> 
+
+                <li class="dt-dropdown">
+                    <a href="shop.html?category=men">MEN <i class="fas fa-chevron-down"></i></a>
+                    <div class="dt-dropdown-menu">
+                        <a href="shop.html?category=men&type=top-wear">Top Wear</a>
+                        <a href="shop.html?category=men&type=bottom-wear">Bottom Wear</a>
+                        <a href="shop.html?category=men&type=ethnic-wear">Ethnic Wear</a>
+                        <a href="shop.html?category=men&type=sports-wear">Sports Wear</a>
+                        <a href="shop.html?category=men&type=accessories">Accessories</a>
+                        <a href="shop.html?category=men&type=footwear">Footwear</a>
+                    </div>
+                </li>
+
+                <li class="dt-dropdown">
+                    <a href="shop.html?category=women">WOMEN <i class="fas fa-chevron-down"></i></a>
+                    <div class="dt-dropdown-menu">
+                        <a href="shop.html?category=women&type=top-wear">Top Wear</a>
+                        <a href="shop.html?category=women&type=bottom-wear">Bottom Wear</a>
+                        <a href="shop.html?category=women&type=ethnic-wear">Ethnic Wear</a>
+                        <a href="shop.html?category=women&type=dresses">Dresses</a>
+                        <a href="shop.html?category=women&type=accessories">Accessories</a>
+                        <a href="shop.html?category=women&type=footwear">Footwear</a>
+                    </div>
+                </li>
+
+                <li class="dt-dropdown">
+                    <a href="shop.html?category=kids">KIDS <i class="fas fa-chevron-down"></i></a>
+                    <div class="dt-dropdown-menu">
+                        <a href="shop.html?category=kids&type=top-wear">Top Wear</a>
+                        <a href="shop.html?category=kids&type=bottom-wear">Bottom Wear</a>
+                        <a href="shop.html?category=kids&type=ethnic-wear">Ethnic Wear</a>
+                        <a href="shop.html?category=kids&type=sports-wear">Sports Wear</a>
+                    </div>
+                </li>
+                
+                <li><a href="orders.html">ORDERS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-right">
+            
+           <div class="search-container">
+    <input type="text" id="global-search" placeholder="Search..." autocomplete="off">
+    <i class="fas fa-search search-icon" id="search-trigger"></i>
+    <div class="search-suggestions" id="search-suggestions"></div>
+</div>
+
+            <a href="profile.html" class="icon-link"><i class="far fa-user"></i></a>
+            
+            <a href="cart.html" class="cart-link">
+                <i class="fas fa-shopping-bag"></i> 
+                <span id="cart-count">0</span>
+            </a>
+        </div>
+
+    </div>
+</header>
+<section class="hero">
+    
+    <div class="hero-bg">
+        <img src="image/product-2.png" class="hero-slide active" alt="New Arrivals">
+        <img src="image/men.png" class="hero-slide" alt="Men Collection">
+        <img src="image/women.png" class="hero-slide" alt="Women Collection">
+        <img src="image/kid.png" class="hero-slide" alt="Kids Collection">
+        <img src="image/acc.png" class="hero-slide" alt="Accessories">
+        <img src="image/trends.png" class="hero-slide" alt="Trending">
+        <img src="image/PRODUCT-7.jpg" class="hero-slide" alt="Sale">
+        
+        <div class="hero-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+        <p class="brand-small" id="hero-subtitle">NEW SEASON 2026</p>
+        <h1 id="hero-title">NEW ARRIVALS</h1>
+        
+        <a href="shop.html" id="hero-btn" class="btn-hero">SHOP NOW</a>
+        
+        <div class="slider-dots">
+            <span class="dot active" onclick="setSlide(0)"></span>
+            <span class="dot" onclick="setSlide(1)"></span>
+            <span class="dot" onclick="setSlide(2)"></span>
+            <span class="dot" onclick="setSlide(3)"></span>
+            <span class="dot" onclick="setSlide(4)"></span>
+            <span class="dot" onclick="setSlide(5)"></span>
+            <span class="dot" onclick="setSlide(6)"></span>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding" id="latest-arrivals">
+    <div class="container">
+        
+        <div class="section-header text-center">
+            <h2 class="section-title">LATEST DROPS</h2>
+            <p class="section-subtitle">Fresh styles just landed. Shop the trend.</p>
+        </div>
+
+        <div class="product-grid">
+            
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <span class="badge new">NEW</span>
+                    <img src="image/demo1.png" alt="Men's Jacket">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); buyNowDirectly(event, 1, 'Premium Bomber Jacket', 2499, 'image/men.png')">
+                        <i class="fas fa-bolt"></i> BUY NOW
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Premium Bomber Jacket</h3>
+                    <p class="category">Men's Top Wear</p>
+                    <div class="price">₹2,499 <span class="old-price">₹4,999</span></div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <span class="badge hot">HOT</span>
+                    <img src="image/demo2.png" alt="Women Dress">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); buyNowDirectly(event, 2, 'Floral Summer Dress', 1299, 'image/women.png')">
+                        <i class="fas fa-bolt"></i> BUY NOW
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Floral Summer Dress</h3>
+                    <p class="category">Women's Fashion</p>
+                    <div class="price">₹1,299 <span class="old-price">₹1,999</span></div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <img src="image/demo3.png" alt="Kids Wear">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); buyNowDirectly(event, 3, 'Kids Denim Set', 999, 'image/kid.png')">
+                        <i class="fas fa-bolt"></i> BUY NOW
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Kids Denim Set</h3>
+                    <p class="category">Kids Collection</p>
+                    <div class="price">₹999 <span class="old-price">₹1,499</span></div>
+                </div>
+            </div>
+
+             <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <span class="badge sale">-40%</span>
+                    <img src="image/demo4.png" alt="T-Shirt">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); buyNowDirectly(event, 4, 'Oversized Graphic Tee', 799, 'image/product-2.jpg')">
+                        <i class="fas fa-bolt"></i> BUY NOW
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Oversized Graphic Tee</h3>
+                    <p class="category">Unisex</p>
+                    <div class="price">₹799 <span class="old-price">₹1,299</span></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="center-btn-container">
+            <a href="shop.html" class="btn-outline-black">VIEW ALL PRODUCTS</a>
+        </div>
+
+    </div>
+</section>
+
+<section class="section-padding bg-light">
+    <h2 class="section-title text-center">SHOP BY SECTION</h2>
+    
+    <div class="horizontal-scroll">
+        
+        <a href="shop.html?search=hoodie" class="category-card vertical">
+            <img src="image/hoodie.jpg" alt="Hoodies">
+            <span class="cat-label">HOODIES</span>
+        </a>
+
+        <a href="shop.html?search=jacket" class="category-card vertical">
+            <img src="image/jaclets.jpg" alt="Jackets">
+            <span class="cat-label">JACKETS</span>
+        </a>
+
+        <a href="shop.html?search=sweater" class="category-card vertical">
+            <img src="image/sweaters copy.jpg" alt="Sweaters">
+            <span class="cat-label">SWEATERS</span>
+        </a>
+
+        <a href="shop.html?search=leather" class="category-card vertical">
+            <img src="image/leather.jpg" alt="Leather">
+            <span class="cat-label">LEATHER</span>
+        </a>
+
+        <a href="shop.html?search=jeans" class="category-card vertical">
+            <img src="image/jeans.jpg" alt="Jeans">
+            <span class="cat-label">JEANS</span>
+        </a>
+
+        <a href="shop.html?search=shirt" class="category-card vertical">
+            <img src="image/shirts.jpg" alt="Shirts">
+            <span class="cat-label">SHIRTS</span>
+        </a>
+
+    </div>
+</section>
+
+<section class="section-padding">
+    <div class="container">
+        
+        <div class="section-header text-center">
+            <h2 class="section-title">SHOP BY CATEGORY</h2>
+            <p class="section-subtitle">Essentials for the modern man.</p>
+        </div>
+
+        <div class="category-grid">
+            
+            <a href="shop.html?category=men&type=top-wear" class="banner-card">
+                <img src="image/men top.png" alt="Men Top Wear">
+                <div class="overlay"></div>
+                <div class="banner-content">
+                    <h3>TOP WEAR</h3>
+                    <button class="btn-transparent">VIEW ALL</button>
+                </div>
+            </a>
+
+            <a href="shop.html?category=men&type=bottom-wear" class="banner-card">
+                <img src="image/menbottom.png" alt="Men Bottom Wear">
+                <div class="overlay"></div>
+                <div class="banner-content">
+                    <h3>BOTTOM WEAR</h3>
+                    <button class="btn-transparent">VIEW ALL</button>
+                </div>
+            </a>
+
+            <a href="shop.html?category=men&type=accessories" class="banner-card">
+                <img src="image/menbag.png" alt="Men Accessories">
+                <div class="overlay"></div>
+                <div class="banner-content">
+                    <h3>ACCESSORIES</h3>
+                    <button class="btn-transparent">VIEW ALL</button>
+                </div>
+            </a>
+
+            <a href="shop.html?category=men&type=sports-wear" class="banner-card">
+                <img src="image/mensports.png" alt="Men Sports Wear">
+                <div class="overlay"></div>
+                <div class="banner-content">
+                    <h3>SPORTS WEAR</h3>
+                    <button class="btn-transparent">VIEW ALL</button>
+                </div>
+            </a>
+
+            <a href="shop.html?category=men&type=ethnic-wear" class="banner-card">
+                <img src="image/menethinic.png" alt="Men Ethnic Wear">
+                <div class="overlay"></div>
+                <div class="banner-content">
+                    <h3>ETHNIC WEAR</h3>
+                    <button class="btn-transparent">VIEW ALL</button>
+                </div>
+            </a>
+
+            <a href="shop.html?category=men&type=footwear" class="banner-card">
+                <img src="image/menac.png" alt="Bags and Footwear">
+                <div class="overlay"></div>
+                <div class="banner-content">
+                    <h3>BAGS & FOOTWEAR</h3>
+                    <button class="btn-transparent">VIEW ALL</button>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+ <section class="section-padding" id="festival-trends">
+    <div class="container">
+        
+        <div class="section-header text-center">
+            <h2 class="section-title">FESTIVAL & TRENDS</h2>
+            <p class="section-subtitle">Elevate your celebration with our handpicked ethnic & party wear.</p>
+        </div>
+
+        <div class="product-grid">
+            
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <span class="badge new">TRENDING</span>
+                    <img src="image/f1.jpg" alt="Men Ethnic">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); addToCartQuick(event, 5, 'Royal Blue Kurta Set', 2999, 'image/menethinic.png')">
+                        <i class="fas fa-shopping-bag"></i> Add
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Blue style Hoodie</h3>
+                    <p class="category">Men's wear</p>
+                    <div class="price">₹2,999 <span class="old-price">₹4,500</span></div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <span class="badge sale">-30%</span>
+                    <img src="image/f2.jpg" alt="Women Gown">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); addToCartQuick(event, 6, 'Velvet Party Gown', 3499, 'image/women.png')">
+                        <i class="fas fa-shopping-bag"></i> Add
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Kids Combo</h3>
+                    <p class="category">Kid's Party Wear</p>
+                    <div class="price">₹3,499 <span class="old-price">₹4,999</span></div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <img src="image/f3.jpg" alt="Blazer">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); addToCartQuick(event, 7, 'Slim Fit Blazer', 4999, 'image/men.png')">
+                        <i class="fas fa-shopping-bag"></i> Add
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Slim long jacket</h3>
+                    <p class="category">Women's Formal</p>
+                    <div class="price">₹4,999 <span class="old-price">₹6,999</span></div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <span class="badge hot">HOT</span>
+                    <img src="image/f4.jpg" alt="Kids Sherwani">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); addToCartQuick(event, 8, 'Kids Golden Sherwani', 1999, 'image/kid.png')">
+                        <i class="fas fa-shopping-bag"></i> Add
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Premium denim Jackets</h3>
+                    <p class="category">Men's Denim</p>
+                    <div class="price">₹1,999 <span class="old-price">₹2,500</span></div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <img src="image/f5.jpg" alt="Leather Bag">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); addToCartQuick(event, 9, 'Premium Leather Bag', 1499, 'image/menbag.png')">
+                        <i class="fas fa-shopping-bag"></i> Add
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Casual shirts</h3>
+                    <p class="category">Men's Top-wear</p>
+                    <div class="price">₹1,499 <span class="old-price">₹2,499</span></div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <span class="badge sale">-50%</span>
+                    <img src="image/f6.jpg" alt="Silk Saree">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); addToCartQuick(event, 10, 'Banarasi Silk Saree', 3999, 'image/women.png')">
+                        <i class="fas fa-shopping-bag"></i> Add
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Summer T-shirt</h3>
+                    <p class="category">Men's Wear</p>
+                    <div class="price">₹3,999 <span class="old-price">₹7,999</span></div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <img src="image/f7.jpg" alt="Loafers">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); addToCartQuick(event, 11, 'Classic Brown Loafers', 1899, 'image/menac.png')">
+                        <i class="fas fa-shopping-bag"></i> Add
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Gym fit for women's</h3>
+                    <p class="category">Women's wear</p>
+                    <div class="price">₹1,899 <span class="old-price">₹2,999</span></div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <span class="badge new">NEW</span>
+                    <img src="image/f8.jpg" alt="Sportswear">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); addToCartQuick(event, 12, 'Active Fit Tracksuit', 2199, 'image/mensports.png')">
+                        <i class="fas fa-shopping-bag"></i> Add
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Active Fit Lowers</h3>
+                    <p class="category">Sports Wear</p>
+                    <div class="price">₹2,199 <span class="old-price">₹3,499</span></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="center-btn-container">
+            <a href="shop.html" class="btn-outline-black">VIEW FESTIVE COLLECTION</a>
+        </div>
+    </div>
+</section>
+<section class="section-padding bg-light">
+    <div class="container">
+        
+        <div class="section-header text-center">
+            <h2 class="section-title">SEASONAL COLLECTIONS</h2>
+            <p class="section-subtitle">Upgrade your wardrobe for every season.</p>
+        </div>
+        
+        <a href="shop.html?collection=all" class="shop-banner-large">
+            <img src="image/rew4.jpg" alt="New Collection Banner">
+            <div class="banner-overlay">
+                <h3>NEW SEASON COLLECTION</h3>
+                <span class="btn-underline">EXPLORE NOW</span>
+            </div>
+        </a>
+
+        <div class="shop-grid-large">
+            
+            <a href="shop.html?search=winter" class="shop-item-large">
+                <img src="image/win.jpg" alt="Winter Collection">
+                <div class="shop-label-box">
+                    <span>WINTERS</span>
+                </div>
+            </a>
+            
+            <a href="shop.html?search=summer" class="shop-item-large">
+                <img src="image/men23.jpg" alt="Summer Collection">
+                <div class="shop-label-box">
+                    <span>SUMMERS</span>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+</section>
+        <section class="section-padding" id="festival-trends">
+    <div class="container">
+        
+        <div class="section-header text-center">
+            <h2 class="section-title">SPECIAL COLLECTION</h2>
+            <p class="section-subtitle">Elevate your celebration with our handpicked ethnic & party wear.</p>
+        </div>
+
+        <div class="product-grid">
+            
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <span class="badge new">TRENDING</span>
+                    <img src="image/s1.jpg" alt="Men Ethnic">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); addToCartQuick(event, 5, 'Royal Blue Kurta Set', 2999, 'image/menethinic.png')">
+                        <i class="fas fa-shopping-bag"></i> Add
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Royal Blue Kurta Set</h3>
+                    <p class="category">Men's Ethnic</p>
+                    <div class="price">₹2,999 <span class="old-price">₹4,500</span></div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <span class="badge sale">-30%</span>
+                    <img src="image/s2.jpg" alt="Women Gown">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); addToCartQuick(event, 6, 'Velvet Party Gown', 3499, 'image/women.png')">
+                        <i class="fas fa-shopping-bag"></i> Add
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Suits for men's</h3>
+                    <p class="category">Premium suits</p>
+                    <div class="price">₹3,499 <span class="old-price">₹4,999</span></div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <img src="image/s3.jpg" alt="Blazer">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); addToCartQuick(event, 7, 'Slim Fit Blazer', 4999, 'image/men.png')">
+                        <i class="fas fa-shopping-bag"></i> Add
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Slim Fit Blazer</h3>
+                    <p class="category">Men's Formal</p>
+                    <div class="price">₹4,999 <span class="old-price">₹6,999</span></div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <span class="badge hot">HOT</span>
+                    <img src="image/s4.jpg" alt="Kids Sherwani">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); addToCartQuick(event, 8, 'Kids Golden Sherwani', 1999, 'image/kid.png')">
+                        <i class="fas fa-shopping-bag"></i> Add
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Kids Golden Sherwani</h3>
+                    <p class="category">Kids Ethnic</p>
+                    <div class="price">₹1,999 <span class="old-price">₹2,500</span></div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <img src="image/s6.jpg" alt="Leather Bag">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); addToCartQuick(event, 9, 'Premium Leather Bag', 1499, 'image/menbag.png')">
+                        <i class="fas fa-shopping-bag"></i> Add
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Premium Leather Bag</h3>
+                    <p class="category">Accessories</p>
+                    <div class="price">₹1,499 <span class="old-price">₹2,499</span></div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <span class="badge sale">-50%</span>
+                    <img src="image/s5.jpg" alt="Silk Saree">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); addToCartQuick(event, 10, 'Banarasi Silk Saree', 3999, 'image/women.png')">
+                        <i class="fas fa-shopping-bag"></i> Add
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Banarasi Silk Saree</h3>
+                    <p class="category">Women's Ethnic</p>
+                    <div class="price">₹3,999 <span class="old-price">₹7,999</span></div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <img src="image/s8.jpg" alt="Loafers">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); addToCartQuick(event, 11, 'Classic Brown Loafers', 1899, 'image/menac.png')">
+                        <i class="fas fa-shopping-bag"></i> Add
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Classic Brown Loafers</h3>
+                    <p class="category">Footwear</p>
+                    <div class="price">₹1,899 <span class="old-price">₹2,999</span></div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="window.location.href='shop.html'">
+                <div class="product-image">
+                    <span class="badge new">NEW</span>
+                    <img src="image/s7.jpg" alt="Sportswear">
+                    <button class="btn-quick-add" onclick="event.stopPropagation(); addToCartQuick(event, 12, 'Active Fit Tracksuit', 2199, 'image/mensports.png')">
+                        <i class="fas fa-shopping-bag"></i> Add
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>Active Fit Tracksuit</h3>
+                    <p class="category">Sports Wear</p>
+                    <div class="price">₹2,199 <span class="old-price">₹3,499</span></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="center-btn-container">
+            <a href="shop.html" class="btn-outline-black">VIEW FESTIVE COLLECTION</a>
+        </div>
+    </div>
+</section>
+</section>
+   <footer id="main-footer">
+    <div class="container">
+        
+        <div class="footer-top">
+            
+            <div class="footer-brand">
+                <h3 class="footer-logo">FASHION<span>FOREVER</span></h3>
+                <p>Your premium destination for trending fashion in Bhopal. Authentic styles for Men, Women & Kids.</p>
+                
+                <div class="store-badges">
+                    <span><i class="fas fa-star"></i> 5.0 Rated</span>
+                    <span><i class="fas fa-check-circle"></i> 100% Authentic</span>
+                </div>
+
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/fashion_forever_bhopal_1/" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/918349865079" target="_blank" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="tel:+910883965079" aria-label="Phone">
+                        <i class="fas fa-phone-alt"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-links-group">
+                <div class="col">
+                    <h4>SHOPPING</h4>
+                    <ul>
+                        <li><a href="shop.html?category=men">Men's Collection</a></li>
+                        <li><a href="shop.html?category=women">Women's Collection</a></li>
+                        <li><a href="shop.html?category=kids">Kids' Collection</a></li>
+                        <li><a href="shop.html?type=accessories">Accessories</a></li>
+                        <li><a href="shop.html">Shop All</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col">
+                    <h4>CUSTOMER CARE</h4>
+                    <ul>
+                        <li><a href="orders.html">Track My Order</a></li>
+                        <li><a href="contact.html">Return & Exchange</a></li>
+                        <li><a href="contact.html">Shipping Policy</a></li>
+                        <li><a href="contact.html">Contact Support</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-store">
+                <h4>VISIT OUR STORE</h4>
+                
+                <div class="store-details">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="store-text">
+                        <strong>Karond, Bhopal</strong>
+                        <p>Madhya Pradesh, 462038</p>
+                        <p class="store-time">Open: 10:00 AM – 9:00 PM</p>
+                    </div>
+                </div>
+
+                <a href="https://maps.google.com/?q=Fashion+Forever+Karond+Bhopal" target="_blank" class="btn-footer-outline">
+                    GET DIRECTIONS <i class="fas fa-location-arrow"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Fashion Forever. All Rights Reserved.</p>
+            <p>Designed by <a href="#">Rishi Dangi</a></p>
+        </div>
+
+    </div>
+</footer>
+
+    <script src="script.js"></script>
+    <div class="chat-icon-btn" onclick="toggleChat()">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <div class="chat-window" id="chat-window">
+        <div class="chat-header">
+            <h3><span class="online-dot"></span> FF Assistant</h3>
+            <span class="close-chat" onclick="toggleChat()">&times;</span>
+        </div>
+        
+        <div class="chat-body" id="chat-body">
+            </div>
+
+        <div class="chat-footer">
+            <input type="text" id="user-input" placeholder="Ask about order, shipping..." onkeypress="handleEnter(event)">
+            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="chatbot.css">
+    <script src="chatbot.js"></script>
+
+</body>
+</html>

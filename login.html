@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Fashion Forever</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="auth-wrapper">
+        <div class="auth-visual">
+            <div class="visual-content">
+                <h1>FASHION<br>FOREVER.</h1>
+                <p>Curated for the bold. Designed for you.</p>
+            </div>
+            <div class="visual-overlay"></div>
+        </div>
+
+        <div class="auth-panel">
+            <div class="auth-header">
+                <span class="brand-logo">FF</span>
+                <a href="index.html" class="close-auth"><i class="fas fa-times"></i></a>
+            </div>
+
+            <div class="form-container">
+                
+                <div id="login-box" class="auth-box active">
+                    <h2>Welcome Back</h2>
+                    <p class="subtitle">Enter your details to access your account.</p>
+
+                    <form id="login-form">
+                        <div class="floating-group">
+                            <input type="email" id="login-email" placeholder=" " required>
+                            <label>Email Address</label>
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        
+                        <div class="floating-group">
+                            <input type="password" id="login-pass" placeholder=" " required>
+                            <label>Password</label>
+                            <i class="fas fa-lock"></i>
+                        </div>
+
+                        <div class="form-options">
+                            <label class="checkbox-container">Remember me
+                                <input type="checkbox" checked>
+                                <span class="checkmark"></span>
+                            </label>
+                            <a href="#" class="forgot-link" onclick="switchMode('forgot')">Forgot Password?</a>
+                        </div>
+
+                        <button type="submit" class="btn-premium">SIGN IN</button>
+                    </form>
+
+                    <div class="auth-footer">
+                        <p>New to Fashion Forever? <button onclick="switchMode('signup')">Create Account</button></p>
+                    </div>
+                </div>
+
+                <div id="signup-box" class="auth-box">
+                    <h2>Join the Club</h2>
+                    <p class="subtitle">Experience premium fashion tailored for you.</p>
+
+                    <form id="signup-form">
+                        <div class="floating-group">
+                            <input type="text" id="reg-name" placeholder=" " required>
+                            <label>Full Name</label>
+                            <i class="fas fa-user"></i>
+                        </div>
+
+                        <div class="floating-group">
+                            <input type="email" id="reg-email" placeholder=" " required>
+                            <label>Email Address</label>
+                            <i class="fas fa-envelope"></i>
+                        </div>
+
+                        <div class="floating-group">
+                            <input type="tel" id="reg-phone" placeholder=" " required>
+                            <label>Mobile Number</label>
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        
+                        <div class="floating-group">
+                            <input type="password" id="reg-pass" placeholder=" " required>
+                            <label>Create Password</label>
+                            <i class="fas fa-lock"></i>
+                        </div>
+
+                        <button type="submit" class="btn-premium">CREATE ACCOUNT</button>
+                    </form>
+
+                    <div class="auth-footer">
+                        <p>Already a member? <button onclick="switchMode('login')">Sign In</button></p>
+                    </div>
+                </div>
+
+                <div id="forgot-box" class="auth-box">
+                    <h2>Reset Password</h2>
+                    <p class="subtitle">Enter your email and new password.</p>
+
+                    <form id="forgot-form">
+                        <div class="floating-group">
+                            <input type="email" id="forgot-email" placeholder=" " required>
+                            <label>Your Registered Email</label>
+                            <i class="fas fa-envelope"></i>
+                        </div>
+
+                        <div class="floating-group">
+                            <input type="password" id="new-pass" placeholder=" " required>
+                            <label>New Password</label>
+                            <i class="fas fa-key"></i>
+                        </div>
+                        
+                        <button type="submit" class="btn-premium">UPDATE PASSWORD</button>
+                    </form>
+
+                    <div class="auth-footer">
+                        <p>Remembered it? <button onclick="switchMode('login')">Back to Sign In</button></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

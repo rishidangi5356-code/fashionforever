@@ -1,0 +1,129 @@
+/* =========================================
+   CHATBOT STYLES (Professional Look)
+   ========================================= */
+
+/* 1. Floating Icon */
+.chat-icon-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #000;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: transform 0.3s;
+}
+.chat-icon-btn:hover { transform: scale(1.1); }
+
+/* 2. Chat Window (Hidden by default) */
+.chat-window {
+    display: none; /* Hidden initially */
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 350px;
+    height: 500px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.2);
+    z-index: 1001;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid #eee;
+}
+
+/* 3. Header */
+.chat-header {
+    background: #000;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.chat-header h3 { margin: 0; font-size: 1rem; display: flex; align-items: center; gap: 10px; }
+.online-dot { width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; }
+.close-chat { cursor: pointer; font-size: 1.2rem; }
+
+/* 4. Chat Body (Messages) */
+.chat-body {
+    flex: 1;
+    padding: 15px;
+    background: #f9f9f9;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Scrollbar styling */
+.chat-body::-webkit-scrollbar { width: 5px; }
+.chat-body::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+
+/* Messages Bubbles */
+.message {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+.bot-msg {
+    align-self: flex-start;
+    background: #e0e0e0;
+    color: #000;
+    border-bottom-left-radius: 2px;
+}
+.user-msg {
+    align-self: flex-end;
+    background: #000;
+    color: #fff;
+    border-bottom-right-radius: 2px;
+}
+
+/* 5. Input Area */
+.chat-footer {
+    padding: 10px;
+    background: #fff;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+}
+.chat-footer input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+}
+.chat-footer button {
+    width: 40px;
+    height: 40px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 480px) {
+    .chat-window {
+        width: 90%;
+        right: 5%;
+        bottom: 90px;
+    }
+}

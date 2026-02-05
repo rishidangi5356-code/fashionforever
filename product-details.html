@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Product Details | Fashion Forever</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="product-details.css">
+    <link rel="icon" href="data:;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <header id="main-header">
+        <div class="navbar">
+            <div class="nav-left">
+                <a href="shop.html" class="back-link"><i class="fas fa-arrow-left"></i> BACK TO SHOP</a>
+            </div>
+            <div class="nav-center-desktop">
+                <span class="brand-top">FASHION</span>
+                <span class="brand-bottom">FOREVER</span>
+            </div>
+            <div class="nav-right">
+                <a href="cart.html" class="cart-link">
+                    <i class="fas fa-shopping-bag"></i> <span id="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-container">
+        
+        <div class="product-details-layout">
+            
+            <div class="gallery-section">
+                <div class="main-image-box" id="zoom-container">
+                    <span class="badge" id="p-badge" style="display:none;">SALE</span>
+                    <img id="main-img" src="" alt="Product">
+                    <div class="zoom-hint-icon"><i class="fas fa-search-plus"></i> Hover to Zoom</div>
+                </div>
+                <div class="thumbnails-row" id="thumbnail-container">
+                    </div>
+            </div>
+
+            <div class="details-section-right">
+                
+                <p class="breadcrumb">Home / Shop / <span id="p-category">...</span> / <span id="p-name-crumb" style="font-weight: 500;">...</span></p>
+                
+                <h1 id="p-name" class="skeleton-text">Loading...</h1>
+                <p class="product-subtitle" id="p-subtitle">Premium Fashion Collection</p>
+                
+                <div class="rating-box-clickable" onclick="document.getElementById('reviews-anchor').scrollIntoView({behavior: 'smooth'})">
+                    <div class="stars-static"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <span id="review-count-display" class="rating-count">(0 Reviews)</span>
+                </div>
+
+                <div class="p-price-box">
+                    <span class="p-price" id="p-price">₹0</span>
+                    <span class="p-old-price" id="p-old-price" style="display:none;">₹0</span>
+                    <span class="discount-label" id="p-discount-label" style="display:none;">(0% OFF)</span>
+                </div>
+                <p class="tax-note">inclusive of all taxes</p>
+
+                <div class="offers-box">
+                    <h4><i class="fas fa-tag"></i> Available Offers</h4>
+                    <ul>
+                        <li><strong>Bank Offer:</strong> 5% Unlimited Cashback on Flipkart Axis Bank Credit Card.</li>
+                        <li><strong>Special Price:</strong> Get extra 10% off (price inclusive of discount).</li>
+                    </ul>
+                </div>
+
+           <div class="selectors-container">
+    <div class="selector-box">
+        <div class="label-row">
+            <h4>SELECT SIZE</h4>
+            <span class="size-guide-btn" onclick="alert('Standard Fit: Order your usual size.')">
+                Size Chart <i class="fas fa-chevron-right"></i>
+            </span>
+        </div>
+        
+        <div class="size-options" id="size-container">
+            </div>
+
+        <p id="size-error" class="error-msg" style="display:none;">
+            <i class="fas fa-exclamation-circle"></i> Please select a size
+        </p>
+    </div>
+</div>
+
+                    <div class="selector-box" style="margin-top:15px;">
+                        <h4>QUANTITY</h4>
+                        <div class="quantity-wrapper">
+                            <button class="qty-btn" onclick="updateQty(-1)">−</button>
+                            <input type="number" id="qty-input" value="1" min="1" readonly>
+                            <button class="qty-btn" onclick="updateQty(1)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="delivery-check-box">
+                    <h4>Delivery Options <i class="fas fa-map-marker-alt"></i></h4>
+                    <div class="pincode-input-group">
+                        <input type="text" placeholder="Enter Pincode" maxlength="6">
+                        <button id="check-pincode-btn">Check</button>
+                    </div>
+                    <ul class="delivery-features">
+                        <li><i class="fas fa-truck"></i> Get it by <span id="delivery-date">Sunday, 25 Jan</span></li>
+                        <li><i class="fas fa-money-bill-wave"></i> Pay on Delivery available</li>
+                        <li><i class="fas fa-undo"></i> 7 Days Replacement Policy</li>
+                    </ul>
+                </div>
+
+                <div class="action-buttons-lg">
+                    <button class="btn-black-block" id="add-cart-btn"><i class="fas fa-shopping-bag"></i> ADD TO CART</button>
+                    <button class="btn-outline-lg" id="buy-now-btn"><i class="fas fa-bolt"></i> BUY NOW</button>
+                </div>
+                
+                <div class="seller-info-box">
+                    <p>Sold by <strong>FashionForever Retail</strong> <span class="seller-rating">4.2 <i class="fas fa-star"></i></span></p>
+                    <ul class="seller-features">
+                        <li><i class="fas fa-check"></i> 100% Original Products</li>
+                    </ul>
+                </div>
+
+                <div class="product-specifications">
+                     <h3 class="spec-title">Product Details <i class="fas fa-list"></i></h3>
+                     <div class="spec-grid">
+                         <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value" id="spec-type">Apparel</span></div>
+                         <div class="spec-item"><span class="spec-label">Sleeve</span><span class="spec-value">Regular</span></div>
+                         <div class="spec-item"><span class="spec-label">Fabric</span><span class="spec-value">Cotton Blend</span></div>
+                         <div class="spec-item"><span class="spec-label">Pattern</span><span class="spec-value">Solid / Printed</span></div>
+                     </div>
+                     <div class="accordion-container-mini">
+                         <div class="accordion-item">
+                            <button class="accordion-header">See More Details <i class="fas fa-chevron-down"></i></button>
+                             <div class="accordion-content">
+                                <p id="p-desc-full">Full product description and care instructions.</p>
+                            </div>
+                        </div>
+                     </div>
+                 </div>
+
+            </div>
+        </div>
+
+        <div class="reviews-section" id="reviews-anchor">
+            <div class="section-header-left">
+                <h2 class="section-title">Ratings & Reviews</h2>
+                <button id="toggle-review-form" class="btn-write-review">Rate Product</button>
+            </div>
+            
+            <div class="review-stats-row">
+                 <div class="big-rating-box">
+                     <span class="big-rating">4.5 <i class="fas fa-star"></i></span>
+                     <p>Based on verified ratings</p>
+                 </div>
+                 <div class="rating-bars">
+                     <div class="r-bar-row"><span>5 <i class="fas fa-star"></i></span> <div class="bar-bg"><div class="bar-fill" style="width: 70%"></div></div></div>
+                     <div class="r-bar-row"><span>4 <i class="fas fa-star"></i></span> <div class="bar-bg"><div class="bar-fill" style="width: 20%"></div></div></div>
+                     <div class="r-bar-row"><span>3 <i class="fas fa-star"></i></span> <div class="bar-bg"><div class="bar-fill" style="width: 5%"></div></div></div>
+                     <div class="r-bar-row"><span>2 <i class="fas fa-star"></i></span> <div class="bar-bg"><div class="bar-fill" style="width: 2%"></div></div></div>
+                     <div class="r-bar-row"><span>1 <i class="fas fa-star"></i></span> <div class="bar-bg"><div class="bar-fill" style="width: 3%"></div></div></div>
+                 </div>
+            </div>
+
+            <div class="review-form-box" id="review-form-box" style="display:none;">
+                <div class="form-header">
+                    <h3>Write a Review</h3>
+                    <i class="fas fa-times" id="close-review-form" style="cursor:pointer;"></i>
+                </div>
+                
+                <input type="text" id="review-name" placeholder="Your Name" required>
+                
+                <div class="star-rating-input">
+                    <span>Rate this product:</span>
+                    <div class="stars-select">
+                        <i class="far fa-star star-input" data-value="1"></i>
+                        <i class="far fa-star star-input" data-value="2"></i>
+                        <i class="far fa-star star-input" data-value="3"></i>
+                        <i class="far fa-star star-input" data-value="4"></i>
+                        <i class="far fa-star star-input" data-value="5"></i>
+                    </div>
+                </div>
+                
+                <textarea id="review-text" placeholder="Description..." rows="4"></textarea>
+                
+                <div class="file-upload-wrapper">
+                    <label for="review-image" class="file-label"><i class="fas fa-camera"></i> Attach Photo</label>
+                    <input type="file" id="review-image" accept="image/*" hidden>
+                    <span id="file-name">No file chosen</span>
+                </div>
+
+                <button id="submit-review-btn" class="btn-black-block">SUBMIT REVIEW</button>
+            </div>
+
+            <div id="reviews-list-container" class="review-grid">
+                </div>
+        </div>
+        
+        <div class="related-section">
+            <h2 class="section-title">Similar Products</h2>
+            <div class="product-grid" id="related-container"></div>
+        </div>
+
+    </div>
+
+    <footer id="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                 <div>
+                    <h4>ABOUT</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                 </div>
+                 <div>
+                    <h4>HELP</h4>
+                    <ul>
+                        <li><a href="#">Payments</a></li>
+                        <li><a href="#">Shipping</a></li>
+                    </ul>
+                 </div>
+                 <div>
+                    <h4>POLICY</h4>
+                    <ul>
+                        <li><a href="#">Return Policy</a></li>
+                    </ul>
+                 </div>
+                 <div>
+                    <h4>SOCIAL</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                 </div>
+            </div>
+             <div class="footer-bottom">
+                 <p>© 2026 Fashion Forever. All Rights Reserved.</p>
+             </div>
+        </div>
+    </footer>
+
+    <div class="mobile-sticky-bar">
+        <button class="btn-white-mobile" id="mobile-add-btn">ADD TO CART</button>
+        <button class="btn-black-mobile" id="mobile-buy-btn">BUY NOW</button>
+    </div>
+
+    <div id="toast"><i class="fas fa-check-circle"></i> Added to Cart</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="products.js"></script>
+    <script src="product-details.js"></script>
+
+</body>
+</html>

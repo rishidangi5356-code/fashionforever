@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Fashion Forever</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="contact.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <header id="main-header">
+        <div class="navbar">
+            <div class="nav-left">
+                <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> HOME</a>
+            </div>
+            <div class="nav-center-desktop">
+                <span class="brand-top">FASHION</span>
+                <span class="brand-bottom">FOREVER</span>
+            </div>
+            <div class="nav-right">
+                <a href="cart.html" class="cart-link">
+                    <i class="fas fa-shopping-bag"></i> <span id="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-container">
+        
+        <div class="contact-header">
+            <h1 class="page-heading">CLIENT SERVICES</h1>
+            <p>We are here to assist you. Reach out for any queries.</p>
+        </div>
+
+        <div class="contact-layout-enhanced">
+            
+            <div class="contact-form-wrapper premium-box">
+                <div class="form-header-box">
+                    <h3>SEND A MESSAGE</h3>
+                    <div class="underline-accent"></div>
+                    <p>Fill this form to instantly open a support chat on WhatsApp.</p>
+                </div>
+                
+                <form id="contact-form" onsubmit="sendToWhatsapp(event)">
+                    <div class="input-row">
+                        <div class="floating-group form-group">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="c-name" placeholder="Your Name" required>
+                        </div>
+                        
+                        <div class="floating-group form-group">
+                            <i class="fas fa-phone input-icon"></i>
+                            <input type="tel" id="c-phone" placeholder="Mobile Number" required>
+                        </div>
+                    </div>
+
+                    <div class="floating-group form-group">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input type="email" id="c-email" placeholder="Your Email Address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="select-wrapper">
+                            <i class="fas fa-tag input-icon-select"></i>
+                            <select id="c-subject" class="styled-select">
+                                <option>Order Status Inquiry</option>
+                                <option>Product Information</option>
+                                <option>Returns & Exchanges</option>
+                                <option>Collaborations</option>
+                                <option>Other</option>
+                            </select>
+                            <i class="fas fa-chevron-down select-arrow"></i>
+                        </div>
+                    </div>
+
+                    <div class="floating-group form-group">
+                        <i class="fas fa-pen input-icon textarea-icon"></i>
+                        <textarea id="c-message" rows="4" placeholder="How can we help you?" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-whatsapp-action">
+                        <span>START CHAT</span>
+                        <i class="fab fa-whatsapp"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div class="contact-info-sidebar">
+                
+                <div class="direct-connect-box">
+                    <div class="status-indicator">
+                        <span class="dot pulse"></span>
+                        <span class="status-text">Customer Support is <strong>Online</strong></span>
+                    </div>
+                    
+                    <h3>Quick Connect</h3>
+                    <div class="social-buttons">
+                        <a href="https://wa.me/918839697440" target="_blank" class="social-btn whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <a href="https://instagram.com/fashion_forever_bhopal_1" target="_blank" class="social-btn instagram">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                    </div>
+                </div>
+
+                <div class="store-details-box">
+                    <h3>Flagship Store</h3>
+                    <ul class="info-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Bhopal, India</strong>
+                                <p>Karond, Bhopal, Madhya Pradesh 462038</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <strong>Phone</strong>
+                                <p>+91 8839697440</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Working Hours</strong>
+                                <p>10:00 AM - 9:00 PM (Daily)</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="faq-mini-section">
+                    <h3>Common Questions</h3>
+                    <div class="faq-item">
+                        <button class="faq-question">How do I track my order? <i class="fas fa-plus"></i></button>
+                        <div class="faq-answer"><p>Go to "My Orders" in your profile and click "Track Order".</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Return Policy? <i class="fas fa-plus"></i></button>
+                        <div class="faq-answer"><p>We offer a 7-day return policy for unused items with tags.</p></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="map-section">
+            <h2 class="section-title text-center">LOCATE US</h2>
+            <div class="map-embed-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3664.198308479564!2d77.4099!3d23.3086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c6819970d6561%3A0x6739922097059762!2sKarond%2C%20Bhopal%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+    </div>
+
+    <footer id="main-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h3 class="footer-logo">FASHION<span>FOREVER</span></h3>
+                    <p>Premium fashion destination in Bhopal.</p>
+                </div>
+                <div class="footer-links-group">
+                    <div class="col">
+                        <h4>Account</h4>
+                        <ul>
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="orders.html">Orders</a></li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="contact.html">Returns</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Fashion Forever. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="contact.js"></script>
+    <script>
+        // Simple Cart Badge Logic incase main script isn't loaded
+        const cart = JSON.parse(localStorage.getItem('myCart')) || [];
+        const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.getElementById('cart-count').innerText = count;
+    </script>
+
+</body>
+</html>

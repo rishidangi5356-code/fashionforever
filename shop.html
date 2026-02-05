@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Fashion Forever</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=">
+    <link rel="stylesheet" href="shop.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header id="shop-header">
+        <div class="navbar">
+            <div class="nav-left">
+                <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> HOME</a> 
+            </div>
+            <div class="nav-center-desktop">
+                <span class="brand-top">FASHION</span>
+                <span class="brand-bottom">FOREVER</span>
+            </div>
+            <div class="nav-right">
+                <a href="cart.html" class="cart-link">
+                    <i class="fas fa-shopping-bag"></i> <span id="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-filter-bar">
+        <button id="mobile-filter-btn"><i class="fas fa-sliders-h"></i> FILTER & SORT</button>
+    </div>
+
+    <div class="shop-container">
+        
+        <aside class="filter-sidebar" id="filter-sidebar">
+            <div class="filter-header-mobile">
+                <h3>Refine Results</h3>
+                <i class="fas fa-times" id="close-filter"></i>
+            </div>
+
+            <div class="filter-group search-group">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search products...">
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h4>Category</h4>
+                <div class="radio-group">
+                    <label><input type="radio" name="category" value="all" checked> All</label>
+                    <label><input type="radio" name="category" value="men"> Men</label>
+                    <label><input type="radio" name="category" value="women"> Women</label>
+                    <label><input type="radio" name="category" value="kids"> Kids</label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h4>Product Type</h4>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" class="type-filter" value="top-wear"> Top Wear (Shirts/Tees)</label>
+                    <label><input type="checkbox" class="type-filter" value="bottom-wear"> Bottom Wear (Jeans)</label>
+                    <label><input type="checkbox" class="type-filter" value="jacket"> Jackets & Hoodies</label>
+                    <label><input type="checkbox" class="type-filter" value="ethnic-wear"> Ethnic Wear</label>
+                    <label><input type="checkbox" class="type-filter" value="sports-wear"> Sports Wear</label>
+                    <label><input type="checkbox" class="type-filter" value="accessories"> Accessories</label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h4>Sort By Price</h4>
+                <select id="sort-select" class="premium-select">
+                    <option value="newest">Newest Arrivals</option>
+                    <option value="low-high">Price: Low to High</option>
+                    <option value="high-low">Price: High to Low</option>
+                </select>
+            </div>
+
+            <button id="apply-filters-btn" class="btn-black-block mobile-only">APPLY FILTERS</button>
+        </aside>
+
+        <section class="shop-results">
+            <div class="results-header">
+                <h2 id="page-title">ALL COLLECTION</h2>
+                <p id="result-count">Showing all products</p>
+            </div>
+            
+            <div class="product-grid" id="product-container">
+                </div>
+            
+            <div id="loading" style="text-align:center; padding:50px; display:none;">
+                <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="filter-overlay" id="filter-overlay"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script> <script src="products.js"></script> <script src="shop.js"></script>    </body>
+</html>
