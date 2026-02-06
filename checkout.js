@@ -161,8 +161,11 @@ function verifyManualUPI() {
 // =========================================
 // 6. PLACE ORDER - SAVES DATA FOR TRACKING
 // =========================================
+// =========================================
+// 6. PLACE ORDER - SAVES DATA FOR TRACKING (UPDATED & FIXED)
+// =========================================
 
-const RAZORPAY_KEY_ID = "YOUR_RAZORPAY_KEY_ID";
+const RAZORPAY_KEY_ID = "rzp_live_SCPy9nPmLtGDiJ";
 
 function placeOrder() {
     const name = document.getElementById('ship-name').value.trim();
@@ -178,7 +181,7 @@ function placeOrder() {
     }
 
     // 2. Disable button
-    if(placeOrderBtn) {
+    if(typeof placeOrderBtn !== 'undefined' && placeOrderBtn) {
         placeOrderBtn.disabled = true;
         placeOrderBtn.innerText = "SAVING ORDER...";
     }
@@ -202,7 +205,7 @@ function placeOrder() {
     // 4. Generate Order ID
     const orderID = Math.floor(100000 + Math.random() * 900000).toString();
 
-    // 5. SAVE COMPLETE ORDER DATA FOR TRACKING (NEW!)
+    // 5. SAVE COMPLETE ORDER DATA FOR TRACKING
     const now = new Date();
     const deliveryDate = new Date(now);
     deliveryDate.setDate(deliveryDate.getDate() + 7);
@@ -262,7 +265,6 @@ function placeOrder() {
         ]
     };
 
-    // Save order data to localStorage for tracking page
     localStorage.setItem(`order_${orderID}`, JSON.stringify(trackingOrder));
     console.log("Saved tracking order:", trackingOrder);
 
@@ -272,14 +274,14 @@ function placeOrder() {
         return;
     }
 
-    // 7. Razorpay Logic
+    // 7. Razorpay Logic (UPDATED FOR MOBILE STABILITY)
     const options = {
         "key": RAZORPAY_KEY_ID, 
-        "amount": finalTotal * 100,
+        "amount": Math.round(finalTotal * 100), // FIXED: Force Integer for Mobile
         "currency": "INR",
         "name": "Fashion Forever",
-        "description": "Order Payment",
-        "image": "https://your-logo-url.com/logo.png",
+        "description": "Payment for Order #" + orderID,
+        "image": "https://fashion-forever.in/logo.png", // Apna sahi logo link dalo
         "handler": function (response) {
             processOnlineOrder(orderID, customerData, response.razorpay_payment_id);
         },
@@ -289,20 +291,38 @@ function placeOrder() {
         },
         "theme": {
             "color": "#000000"
+        },
+        "modal": {
+            "ondismiss": function() {
+                // Payment cancel hone pe button vapis thik ho jaye
+                if(typeof placeOrderBtn !== 'undefined' && placeOrderBtn) {
+                    placeOrderBtn.disabled = false;
+                    placeOrderBtn.innerText = "PLACE ORDER";
+                }
+            }
         }
     };
 
-    const rzp1 = new Razorpay(options);
-    
-    rzp1.on('payment.failed', function (response){
-        alert("Payment Failed: " + response.error.description);
-        if(placeOrderBtn) {
+    try {
+        const rzp1 = new Razorpay(options);
+        
+        rzp1.on('payment.failed', function (response){
+            alert("Oops! Payment Failed: " + response.error.description);
+            if(typeof placeOrderBtn !== 'undefined' && placeOrderBtn) {
+                placeOrderBtn.disabled = false;
+                placeOrderBtn.innerText = "PLACE ORDER";
+            }
+        });
+
+        rzp1.open();
+    } catch (error) {
+        console.error("Razorpay Error:", error);
+        alert("Payment gateway failed to load. Please check your internet.");
+        if(typeof placeOrderBtn !== 'undefined' && placeOrderBtn) {
             placeOrderBtn.disabled = false;
             placeOrderBtn.innerText = "PLACE ORDER";
         }
-    });
-
-    rzp1.open();
+    }
 }
 
 // =========================================
