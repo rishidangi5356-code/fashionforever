@@ -31,47 +31,50 @@ window.onload = function() {
     calculateTotals(); 
 };
 
-// 1. CALCULATE TOTALS
 function calculateTotals() {
     let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     
-    // COD Fee Logic
+    // 1. COD Fee Logic
     let currentCodFee = 0;
     const codRow = document.getElementById('cod-fee-row');
     
     if(currentPaymentMethod === 'cod') {
-        currentCodFee = COD_FEE;
+        currentCodFee = COD_FEE; // 50 Rupee
         if(codRow) codRow.style.display = 'flex';
     } else {
         currentCodFee = 0;
         if(codRow) codRow.style.display = 'none';
     }
 
-    // GST Calculation (2%)
+    // 2. GST Calculation (2% Fixed)
     let tax = Math.round(subtotal * 0.02);
     
-    // Final Total
+    // 3. Final Total Calculation
+    // Sab kuch jod kar final total banta hai
     finalTotal = subtotal + SHIPPING_COST + tax + currentCodFee;
 
-    // Update UI
+    // 4. Update UI (Screen par dikhane ke liye)
     const subtotalEl = document.getElementById('c-subtotal');
     if(subtotalEl) subtotalEl.innerText = "₹" + subtotal;
     
-    // GST Display
     const taxEl = document.getElementById('c-tax');
     if(taxEl) taxEl.innerText = "₹" + tax;
     
-    // Update all total displays
+    // Saare total displays (Checkout button aur summary) ko update karo
     document.querySelectorAll('.final-pay-amount').forEach(el => {
         el.innerText = "₹" + finalTotal;
     });
     
-    // Regenerate QR if on UPI tab
+    // 5. QR Code refresh agar UPI select hai
     if(currentPaymentMethod === 'upi') {
         generateQRCode();
     }
-}
 
+    // Global variables update kar rahe hain taaki processOrder functions inhe utha sakein
+    window.currentSubtotal = subtotal;
+    window.currentTax = tax;
+    window.currentCodFee = currentCodFee;
+}
 // 2. RENDER ITEMS
 function renderSummaryItems() {
     if(!summaryBox) return;
@@ -329,16 +332,19 @@ function placeOrder() {
 function processCODOrder(orderID, customerData) {
     let itemsString = cart.map(item => `${item.name} (${item.size} x${item.quantity})`).join(", ");
 
-    const orderData = {
-        order_id: orderID,
-        payment_id: "COD_PENDING",
-        name: customerData.name,
-        phone: customerData.phone,
-        address: customerData.address,
-        items: itemsString,
-        total: finalTotal,
-        payment_method: "COD"
-    };
+  const orderData = {
+    order_id: orderID,
+    payment_id: "COD_PENDING",
+    name: customerData.name,
+    phone: customerData.phone,
+    address: customerData.address,
+    items: itemsString,
+    subtotal: window.currentSubtotal,
+    tax: window.currentTax,
+    codFee: 50,
+    total: finalTotal,
+    payment_method: "COD"
+};
 
     console.log("Processing COD order:", orderData);
 
@@ -370,16 +376,19 @@ sendWhatsAppNotification(orderData);
 function processOnlineOrder(orderID, customerData, paymentID) {
     let itemsString = cart.map(item => `${item.name} (${item.size} x${item.quantity})`).join(", ");
 
-    const orderData = {
-        order_id: orderID,
-        payment_id: paymentID,
-        name: customerData.name,
-        phone: customerData.phone,
-        address: customerData.address,
-        items: itemsString,
-        total: finalTotal,
-        payment_method: "ONLINE"
-    };
+  const orderData = {
+    order_id: orderID,
+    payment_id: paymentID,
+    name: customerData.name,
+    phone: customerData.phone,
+    address: customerData.address,
+    items: itemsString,
+    subtotal: window.currentSubtotal,
+    tax: window.currentTax,
+    codFee: 0,
+    total: finalTotal,
+    payment_method: "ONLINE"
+};
 
     console.log("Processing online order:", orderData);
 
@@ -405,17 +414,21 @@ sendWhatsAppNotification(orderData);
 }
 // Isse sabse neeche paste karein
 function sendWhatsAppNotification(orderDetails) {
-    const myNumber = "918839697440"; // Tera number
+    const myNumber = "918839697440"; 
+    
+    // Sab details ko ek dum saaf format mein likha hai
     let message = `*🔥 NEW ORDER RECEIVED!* %0A%0A` +
         `*Order ID:* #FF${orderDetails.order_id}%0A` +
         `*Customer:* ${orderDetails.name}%0A` +
         `*Phone:* ${orderDetails.phone}%0A` +
         `*Address:* ${orderDetails.address}%0A%0A` +
-        `*Items:* ${orderDetails.items}%0A%0A` +
-        `*Total:* ₹${orderDetails.total}%0A` +
-        `*Payment:* ${orderDetails.payment_method}%0A` +
-        `*Transaction ID:* ${orderDetails.payment_id}%0A%0A` +
-        `Confirm karne ke liye reply karein.`;
+        `*--- ITEMS ---*%0A${orderDetails.items}%0A%0A` +
+        `*Subtotal:* ₹${orderDetails.subtotal}%0A` +
+        `*Tax (2%):* ₹${orderDetails.tax}%0A` +
+        `*COD Charges:* ₹${orderDetails.codFee}%0A` +
+        `*GRAND TOTAL:* ₹${orderDetails.total}%0A%0A` +
+        `*Payment Mode:* ${orderDetails.payment_method}%0A` +
+        `*Status:* Confirmed via Website`;
 
     const whatsappUrl = `https://wa.me/${myNumber}?text=${message}`;
     window.open(whatsappUrl, '_blank');
