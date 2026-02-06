@@ -1029,105 +1029,86 @@
         </div>
     </footer>
 
-    <script>
-    // Get order data from localStorage or URL
+   <script>
+    // 1. Initialize Page Data
     function initializeOrderPage() {
         const urlParams = new URLSearchParams(window.location.search);
-        const orderId = urlParams.get('id');
+        const orderId = urlParams.get('id') || Math.floor(100000 + Math.random() * 900000).toString();
         
-        // Data fetch kar rahe hain
         const cart = JSON.parse(localStorage.getItem('myCart')) || [];
         const customerData = JSON.parse(localStorage.getItem('customerData')) || {};
 
-        // 1. Order ID set karo
-        if(orderId) {
-            document.getElementById('display-order-id').innerText = '#FF' + orderId;
-        } else {
-            const timestamp = Date.now();
-            document.getElementById('display-order-id').innerText = '#FF' + timestamp.toString().slice(-6);
-        }
+        document.getElementById('display-order-id').innerText = '#FF' + orderId;
+        document.getElementById('customer-email').innerText = `to ${customerData.phone || 'customer'}@fashion-forever.in`;
+        document.getElementById('delivery-address').innerText = customerData.address || 'Not Provided';
+        document.getElementById('payment-method').innerText = customerData.paymentMethod || 'Cash on Delivery';
 
-        // 2. Customer Email & Phone Logic
-        const phone = customerData.phone || 'customer';
-        document.getElementById('customer-email').innerText = `to ${phone}@customer.com`;
+        // Items populate karo aur calculation fix karo
+        populateItemsAndSendWA(orderId, cart, customerData);
 
-        // 3. Delivery Address
-        document.getElementById('delivery-address').innerText = customerData.address || 'Address details in confirmation email';
-
-        // 4. Delivery Date (4-6 business days)
-        const deliveryDate = new Date();
-        deliveryDate.setDate(deliveryDate.getDate() + 5);
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('delivery-date').innerText = `By ${deliveryDate.toLocaleDateString('en-IN', options)}`;
-
-        // 5. Payment Method
-        const paymentMethod = customerData.paymentMethod || 'Cash on Delivery';
-        document.getElementById('payment-method').innerText = paymentMethod;
-
-        // 6. Populate Items and Final Totals
-        populateItems(cart, customerData);
-
-        // 7. Clear cart after display (Safe timing)
-        setTimeout(() => {
-            localStorage.removeItem('myCart');
-            // Customer data rehne dete hain success page refreshes ke liye
-        }, 5000);
+        // Cart clear timing
+        setTimeout(() => { localStorage.removeItem('myCart'); }, 5000);
     }
 
-    function populateItems(cart, customerData) {
+    // 2. Populate Items + Calculate + WhatsApp Logic
+    function populateItemsAndSendWA(orderId, cart, customerData) {
         const container = document.getElementById('items-container');
-        
-        if(cart.length === 0) {
-            container.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">No items in order</p>';
-            return;
-        }
-
         let itemsHTML = '';
         let subtotal = 0;
+        let itemsListForWA = ''; // WhatsApp ke liye list string
 
         cart.forEach(item => {
             const itemTotal = item.price * item.quantity;
             subtotal += itemTotal;
-
             itemsHTML += `
                 <div class="item-row">
-                    <div class="item-image">
-                        <img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/80x100?text=No+Image'">
-                    </div>
+                    <div class="item-image"><img src="${item.image}" onerror="this.src='https://via.placeholder.com/80x100'"></div>
                     <div class="item-info">
                         <div class="item-name">${item.name}</div>
-                        <div class="item-meta">Size: <strong>${item.size}</strong> | Qty: <strong>${item.quantity}</strong></div>
-                        <div class="item-price">₹${item.price} × ${item.quantity} = ₹${itemTotal.toLocaleString('en-IN')}</div>
+                        <div class="item-meta">Size: ${item.size} | Qty: ${item.quantity}</div>
+                        <div class="item-price">₹${item.price} × ${item.quantity} = ₹${itemTotal}</div>
                     </div>
-                </div>
-            `;
+                </div>`;
+            itemsListForWA += `- ${item.name} (${item.size}) x${item.quantity}%0A`;
         });
 
         container.innerHTML = itemsHTML;
 
-        // --- CALCULATION LOGIC (FIXED TO 2% GST + COD) ---
-        const tax = Math.round(subtotal * 0.02); // Exact 2% GST jaisa Checkout.js mein hai
-        const codFee = (customerData.paymentMethod === 'Cash on Delivery' || customerData.paymentMethod === 'cod') ? 50 : 0;
-        const finalTotal = subtotal + tax + codFee;
+        // FIXED CALCULATION (2% GST + COD)
+        const tax = Math.round(subtotal * 0.02);
+        const codFee = (customerData.paymentMethod === 'Cash on Delivery') ? 50 : 0;
+        const total = subtotal + tax + codFee;
 
-        // Update Summary UI
-        document.getElementById('summary-subtotal').innerText = `₹${subtotal.toLocaleString('en-IN')}`;
-        document.getElementById('summary-tax').innerText = `₹${tax.toLocaleString('en-IN')}`;
-        document.getElementById('summary-shipping').innerText = (codFee > 0) ? `₹${codFee} (COD Charge)` : "FREE";
-        document.getElementById('summary-total').innerText = `₹${finalTotal.toLocaleString('en-IN')}`;
-        document.getElementById('order-total').innerText = `₹${finalTotal.toLocaleString('en-IN')}`;
+        // UI Update
+        document.getElementById('summary-subtotal').innerText = "₹" + subtotal;
+        document.getElementById('summary-tax').innerText = "₹" + tax;
+        document.getElementById('summary-shipping').innerText = (codFee > 0) ? "₹50 (COD Fee)" : "FREE";
+        document.getElementById('summary-total').innerText = "₹" + total;
+        document.getElementById('order-total').innerText = "₹" + total;
+
+        // 🟢 WHATSAPP MESSAGE (Sab kuch isme hai ab)
+        const myNumber = "918839697440";
+        const message = `*🔥 NEW ORDER RECEIVED!*%0A%0A` +
+            `*Order ID:* #FF${orderId}%0A` +
+            `*Customer:* ${customerData.name}%0A` +
+            `*Phone:* ${customerData.phone}%0A` +
+            `*Address:* ${customerData.address}%0A%0A` +
+            `*--- ITEMS ---*%0A${itemsListForWA}%0A` +
+            `*Subtotal:* ₹${subtotal}%0A` +
+            `*Tax (2%):* ₹${tax}%0A` +
+            `*COD Fee:* ₹${codFee}%0A` +
+            `*GRAND TOTAL:* ₹${total}%0A%0A` +
+            `*Payment:* ${customerData.paymentMethod}`;
+
+        // Send Only if it's a new load
+        if (!window.location.hash.includes('sent')) {
+            window.open(`https://wa.me/${myNumber}?text=${message}`, '_blank');
+            window.location.hash = 'sent'; // Taki refresh par baar baar na khule
+        }
     }
 
-    function printOrder() {
-        window.print();
-    }
-
-    function downloadInvoice() {
-        alert('Invoice will be sent to your WhatsApp/Phone soon!');
-    }
-
-    // Initialize when page loads
     document.addEventListener('DOMContentLoaded', initializeOrderPage);
+    function printOrder() { window.print(); }
 </script>
 </body>
 </html>
