@@ -159,9 +159,7 @@ function verifyManualUPI() {
 }
 
 // =========================================
-// 6. PLACE ORDER - SAVES DATA FOR TRACKING
-// =========================================
-// =========================================
+/// =========================================
 // 6. PLACE ORDER - SAVES DATA FOR TRACKING (UPDATED & FIXED)
 // =========================================
 
@@ -324,7 +322,6 @@ function placeOrder() {
         }
     }
 }
-
 // =========================================
 // COD ORDER PROCESSING
 // =========================================
@@ -353,6 +350,9 @@ function processCODOrder(orderID, customerData) {
         body: JSON.stringify(orderData)
     })
     .then(() => {
+        // Is line ko dhundo: .then(() => { 
+// Aur uske thik neeche ye paste kar do:
+sendWhatsAppNotification(orderData);
         console.log("Order sent to Google Sheets, redirecting...");
         window.location.href = `success.html?id=${orderID}`;
     })
@@ -391,6 +391,9 @@ function processOnlineOrder(orderID, customerData, paymentID) {
         body: JSON.stringify(orderData)
     })
     .then(() => {
+        // Is line ko dhundo: .then(() => { 
+// Aur uske thik neeche ye paste kar do:
+sendWhatsAppNotification(orderData);
         console.log("Order sent to Google Sheets, redirecting...");
         window.location.href = `success.html?id=${orderID}`;
     })
@@ -399,4 +402,21 @@ function processOnlineOrder(orderID, customerData, paymentID) {
         alert("✅ Order Success!\nOrder ID: #FF" + orderID + "\nRedirecting to confirmation...");
         window.location.href = `success.html?id=${orderID}`;
     });
+}
+// Isse sabse neeche paste karein
+function sendWhatsAppNotification(orderDetails) {
+    const myNumber = "918839697440"; // Tera number
+    let message = `*🔥 NEW ORDER RECEIVED!* %0A%0A` +
+        `*Order ID:* #FF${orderDetails.order_id}%0A` +
+        `*Customer:* ${orderDetails.name}%0A` +
+        `*Phone:* ${orderDetails.phone}%0A` +
+        `*Address:* ${orderDetails.address}%0A%0A` +
+        `*Items:* ${orderDetails.items}%0A%0A` +
+        `*Total:* ₹${orderDetails.total}%0A` +
+        `*Payment:* ${orderDetails.payment_method}%0A` +
+        `*Transaction ID:* ${orderDetails.payment_id}%0A%0A` +
+        `Confirm karne ke liye reply karein.`;
+
+    const whatsappUrl = `https://wa.me/${myNumber}?text=${message}`;
+    window.open(whatsappUrl, '_blank');
 }
