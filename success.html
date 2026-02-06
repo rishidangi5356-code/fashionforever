@@ -1030,103 +1030,104 @@
     </footer>
 
     <script>
-        // Get order data from localStorage or URL
-        function initializeOrderPage() {
-            // Get from URL parameters (passed from checkout)
-            const urlParams = new URLSearchParams(window.location.search);
-            const orderId = urlParams.get('id');
-            
-            // Get cart data from localStorage
-            const cart = JSON.parse(localStorage.getItem('myCart')) || [];
-            const customerData = JSON.parse(localStorage.getItem('customerData')) || {};
+    // Get order data from localStorage or URL
+    function initializeOrderPage() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderId = urlParams.get('id');
+        
+        // Data fetch kar rahe hain
+        const cart = JSON.parse(localStorage.getItem('myCart')) || [];
+        const customerData = JSON.parse(localStorage.getItem('customerData')) || {};
 
-            // Set Order ID
-            if(orderId) {
-                document.getElementById('display-order-id').innerText = '#FF' + orderId.padStart(6, '0');
-            } else {
-                const timestamp = Date.now();
-                document.getElementById('display-order-id').innerText = '#FF' + timestamp.toString().slice(-6);
-            }
-
-            // Set Customer Email
-            const email = customerData.email || 'your-email@example.com';
-            document.getElementById('customer-email').innerText = `to ${email}`;
-
-            // Set Delivery Address
-            const address = customerData.address || 'Address details will be provided in confirmation email';
-            document.getElementById('delivery-address').innerText = address;
-
-            // Calculate Delivery Date (4-6 business days)
-            const deliveryDate = new Date();
-            deliveryDate.setDate(deliveryDate.getDate() + 5);
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('delivery-date').innerText = `By ${deliveryDate.toLocaleDateString('en-IN', options)}`;
-
-            // Set Payment Method
-            const paymentMethod = customerData.paymentMethod || 'Cash on Delivery';
-            document.getElementById('payment-method').innerText = paymentMethod;
-
-            // Populate Items
-            populateItems(cart, customerData);
-
-            // Clear cart after displaying
-            setTimeout(() => {
-                localStorage.removeItem('myCart');
-                localStorage.removeItem('customerData');
-            }, 3000);
+        // 1. Order ID set karo
+        if(orderId) {
+            document.getElementById('display-order-id').innerText = '#FF' + orderId;
+        } else {
+            const timestamp = Date.now();
+            document.getElementById('display-order-id').innerText = '#FF' + timestamp.toString().slice(-6);
         }
 
-        function populateItems(cart, customerData) {
-            const container = document.getElementById('items-container');
-            
-            if(cart.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">No items in order</p>';
-                return;
-            }
+        // 2. Customer Email & Phone Logic
+        const phone = customerData.phone || 'customer';
+        document.getElementById('customer-email').innerText = `to ${phone}@customer.com`;
 
-            let itemsHTML = '';
-            let subtotal = 0;
+        // 3. Delivery Address
+        document.getElementById('delivery-address').innerText = customerData.address || 'Address details in confirmation email';
 
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                subtotal += itemTotal;
+        // 4. Delivery Date (4-6 business days)
+        const deliveryDate = new Date();
+        deliveryDate.setDate(deliveryDate.getDate() + 5);
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('delivery-date').innerText = `By ${deliveryDate.toLocaleDateString('en-IN', options)}`;
 
-                itemsHTML += `
-                    <div class="item-row">
-                        <div class="item-image">
-                            <img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/80x100?text=No+Image'">
-                        </div>
-                        <div class="item-info">
-                            <div class="item-name">${item.name}</div>
-                            <div class="item-meta">Size: <strong>${item.size}</strong> | Qty: <strong>${item.quantity}</strong></div>
-                            <div class="item-price">₹${item.price} × ${item.quantity} = ₹${itemTotal.toLocaleString('en-IN')}</div>
-                        </div>
+        // 5. Payment Method
+        const paymentMethod = customerData.paymentMethod || 'Cash on Delivery';
+        document.getElementById('payment-method').innerText = paymentMethod;
+
+        // 6. Populate Items and Final Totals
+        populateItems(cart, customerData);
+
+        // 7. Clear cart after display (Safe timing)
+        setTimeout(() => {
+            localStorage.removeItem('myCart');
+            // Customer data rehne dete hain success page refreshes ke liye
+        }, 5000);
+    }
+
+    function populateItems(cart, customerData) {
+        const container = document.getElementById('items-container');
+        
+        if(cart.length === 0) {
+            container.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">No items in order</p>';
+            return;
+        }
+
+        let itemsHTML = '';
+        let subtotal = 0;
+
+        cart.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            subtotal += itemTotal;
+
+            itemsHTML += `
+                <div class="item-row">
+                    <div class="item-image">
+                        <img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/80x100?text=No+Image'">
                     </div>
-                `;
-            });
+                    <div class="item-info">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-meta">Size: <strong>${item.size}</strong> | Qty: <strong>${item.quantity}</strong></div>
+                        <div class="item-price">₹${item.price} × ${item.quantity} = ₹${itemTotal.toLocaleString('en-IN')}</div>
+                    </div>
+                </div>
+            `;
+        });
 
-            container.innerHTML = itemsHTML;
+        container.innerHTML = itemsHTML;
 
-            // Update Summary
-            const tax = Math.round(subtotal * 0.1); // Assuming 10% tax
-            const total = subtotal + tax;
+        // --- CALCULATION LOGIC (FIXED TO 2% GST + COD) ---
+        const tax = Math.round(subtotal * 0.02); // Exact 2% GST jaisa Checkout.js mein hai
+        const codFee = (customerData.paymentMethod === 'Cash on Delivery' || customerData.paymentMethod === 'cod') ? 50 : 0;
+        const finalTotal = subtotal + tax + codFee;
 
-            document.getElementById('summary-subtotal').innerText = `₹${subtotal.toLocaleString('en-IN')}`;
-            document.getElementById('summary-tax').innerText = `₹${tax.toLocaleString('en-IN')}`;
-            document.getElementById('summary-total').innerText = `₹${total.toLocaleString('en-IN')}`;
-            document.getElementById('order-total').innerText = `₹${total.toLocaleString('en-IN')}`;
-        }
+        // Update Summary UI
+        document.getElementById('summary-subtotal').innerText = `₹${subtotal.toLocaleString('en-IN')}`;
+        document.getElementById('summary-tax').innerText = `₹${tax.toLocaleString('en-IN')}`;
+        document.getElementById('summary-shipping').innerText = (codFee > 0) ? `₹${codFee} (COD Charge)` : "FREE";
+        document.getElementById('summary-total').innerText = `₹${finalTotal.toLocaleString('en-IN')}`;
+        document.getElementById('order-total').innerText = `₹${finalTotal.toLocaleString('en-IN')}`;
+    }
 
-        function printOrder() {
-            window.print();
-        }
+    function printOrder() {
+        window.print();
+    }
 
-        function downloadInvoice() {
-            alert('Invoice download feature coming soon!\nYou can also print and save as PDF using your browser.');
-        }
+    function downloadInvoice() {
+        alert('Invoice will be sent to your WhatsApp/Phone soon!');
+    }
 
-        // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', initializeOrderPage);
-    </script>
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', initializeOrderPage);
+</script>
 </body>
 </html>
