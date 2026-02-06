@@ -165,7 +165,7 @@ function verifyManualUPI() {
 // 6. PLACE ORDER - SAVES DATA FOR TRACKING (UPDATED & FIXED)
 // =========================================
 
-const RAZORPAY_KEY_ID = "rzp_live_SCPy9nPmLtGDiJ";
+const RAZORPAY_KEY_ID = "rzp_live_SCld8m9J4bwZFn";
 
 function placeOrder() {
     const name = document.getElementById('ship-name').value.trim();
