@@ -1,5 +1,5 @@
 const hamburgerBtn = document.getElementById('hamburger-btn');
-const closeBtn = document.getElementById('close-btn');
+const closeBtn = document.getElementById('close-btn'); 
 const sidebar = document.getElementById('sidebar-menu');
 
 hamburgerBtn.addEventListener('click', () => {
@@ -154,27 +154,141 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 2. SMART SEARCH LOGIC (With All New Categories)
+    // 2. SMART SEARCH LOGIC (With 100+ Men's & Kids' Suggestions)
     const searchInput = document.getElementById('global-search');
     const suggestionsBox = document.getElementById('search-suggestions');
 
-    // FULL Search Data
+    // FULL Search Data (100+ Products focusing on Men & Kids)
     const searchData = [
-        { name: "Men's Top Wear (Shirts, Tees)", link: "shop.html?category=men&type=top-wear" },
-        { name: "Men's Bottom Wear (Jeans)", link: "shop.html?category=men&type=bottom-wear" },
-        { name: "Men's Ethnic Wear", link: "shop.html?category=men&type=ethnic-wear" },
-        { name: "Men's Sports Wear", link: "shop.html?category=men&type=sports-wear" },
-        { name: "Men's Footwear", link: "shop.html?category=men&type=footwear" },
-        
-        { name: "Women's Top Wear", link: "shop.html?category=women&type=top-wear" },
-        { name: "Women's Dresses", link: "shop.html?category=women&type=dresses" },
-        { name: "Women's Ethnic Wear", link: "shop.html?category=women&type=ethnic-wear" },
-        { name: "Women's Footwear", link: "shop.html?category=women&type=footwear" },
-        
-        { name: "Kids Top Wear", link: "shop.html?category=kids&type=top-wear" },
-        { name: "Kids Ethnic Wear", link: "shop.html?category=kids&type=ethnic-wear" },
-        
-        { name: "Accessories (Bags, Watches)", link: "shop.html?type=accessories" }
+        // --- MEN'S TOP WEAR ---
+        { name: "Men's Casual White Shirt", link: "shop.html?category=men&type=top-wear" },
+        { name: "Men's Black Slim Fit T-Shirt", link: "shop.html?category=men&type=top-wear" },
+        { name: "Men's Oversized Graphic Tee", link: "shop.html?category=men&type=top-wear" },
+        { name: "Men's Denim Jacket", link: "shop.html?category=men&type=top-wear" },
+        { name: "Men's Checked Flannel Shirt", link: "shop.html?category=men&type=top-wear" },
+        { name: "Men's V-Neck Cotton Sweater", link: "shop.html?category=men&type=top-wear" },
+        { name: "Men's Polo Neck T-Shirt", link: "shop.html?category=men&type=top-wear" },
+        { name: "Men's Linen Summer Shirt", link: "shop.html?category=men&type=top-wear" },
+        { name: "Men's Hoodie with Pocket", link: "shop.html?category=men&type=top-wear" },
+        { name: "Men's Formal Blue Shirt", link: "shop.html?category=men&type=top-wear" },
+
+        // --- MEN'S BOTTOM WEAR ---
+        { name: "Men's Blue Straight Fit Jeans", link: "shop.html?category=men&type=bottom-wear" },
+        { name: "Men's Black Skinny Jeans", link: "shop.html?category=men&type=bottom-wear" },
+        { name: "Men's Beige Chino Trousers", link: "shop.html?category=men&type=bottom-wear" },
+        { name: "Men's Olive Cargo Pants", link: "shop.html?category=men&type=bottom-wear" },
+        { name: "Men's Cotton Grey Joggers", link: "shop.html?category=men&type=bottom-wear" },
+        { name: "Men's Denim Shorts", link: "shop.html?category=men&type=bottom-wear" },
+        { name: "Men's Formal Black Trousers", link: "shop.html?category=men&type=bottom-wear" },
+        { name: "Men's Relaxed Fit Pyjamas", link: "shop.html?category=men&type=bottom-wear" },
+        { name: "Men's Athletic Shorts", link: "shop.html?category=men&type=bottom-wear" },
+        { name: "Men's Corduroy Pants", link: "shop.html?category=men&type=bottom-wear" },
+
+        // --- MEN'S ETHNIC WEAR ---
+        { name: "Men's Cotton Kurta", link: "shop.html?category=men&type=ethnic-wear" },
+        { name: "Men's Embroidered Sherwani", link: "shop.html?category=men&type=ethnic-wear" },
+        { name: "Men's Nehru Jacket", link: "shop.html?category=men&type=ethnic-wear" },
+        { name: "Men's Pathani Suit", link: "shop.html?category=men&type=ethnic-wear" },
+        { name: "Men's Silk Kurta Pajama Set", link: "shop.html?category=men&type=ethnic-wear" },
+        { name: "Men's Wedding Dhoti Set", link: "shop.html?category=men&type=ethnic-wear" },
+        { name: "Men's Bandhgala Blazer", link: "shop.html?category=men&type=ethnic-wear" },
+        { name: "Men's Lucknawi Chikankari Kurta", link: "shop.html?category=men&type=ethnic-wear" },
+        { name: "Men's Ethnic Waistcoat", link: "shop.html?category=men&type=ethnic-wear" },
+        { name: "Men's Festive Dupion Silk Kurta", link: "shop.html?category=men&type=ethnic-wear" },
+
+        // --- MEN'S SPORTS WEAR ---
+        { name: "Men's Dry-Fit Training Tee", link: "shop.html?category=men&type=sports-wear" },
+        { name: "Men's Compression Leggings", link: "shop.html?category=men&type=sports-wear" },
+        { name: "Men's Full Zip Tracksuit", link: "shop.html?category=men&type=sports-wear" },
+        { name: "Men's Sleeveless Gym Vest", link: "shop.html?category=men&type=sports-wear" },
+        { name: "Men's Running Shorts", link: "shop.html?category=men&type=sports-wear" },
+        { name: "Men's Sports Windbreaker", link: "shop.html?category=men&type=sports-wear" },
+        { name: "Men's Football Jersey", link: "shop.html?category=men&type=sports-wear" },
+        { name: "Men's Training Joggers", link: "shop.html?category=men&type=sports-wear" },
+        { name: "Men's Padded Cycling Shorts", link: "shop.html?category=men&type=sports-wear" },
+        { name: "Men's Breathable Mesh Tank Top", link: "shop.html?category=men&type=sports-wear" },
+
+        // --- MEN'S FOOTWEAR ---
+        { name: "Men's White Casual Sneakers", link: "shop.html?category=men&type=footwear" },
+        { name: "Men's Leather Oxford Shoes", link: "shop.html?category=men&type=footwear" },
+        { name: "Men's Suede Loafers", link: "shop.html?category=men&type=footwear" },
+        { name: "Men's Chelsea Boots", link: "shop.html?category=men&type=footwear" },
+        { name: "Men's Running Sports Shoes", link: "shop.html?category=men&type=footwear" },
+        { name: "Men's Leather Flip Flops", link: "shop.html?category=men&type=footwear" },
+        { name: "Men's Formal Derby Shoes", link: "shop.html?category=men&type=footwear" },
+        { name: "Men's Canvas Slip-Ons", link: "shop.html?category=men&type=footwear" },
+        { name: "Men's Hiking Outdoor Boots", link: "shop.html?category=men&type=footwear" },
+        { name: "Men's Ethnic Jutis", link: "shop.html?category=men&type=footwear" },
+
+        // --- KIDS TOP WEAR ---
+        { name: "Kids Superhero Print Tee", link: "shop.html?category=kids&type=top-wear" },
+        { name: "Kids Hooded Sweatshirt", link: "shop.html?category=kids&type=top-wear" },
+        { name: "Kids Denim Shirt", link: "shop.html?category=kids&type=top-wear" },
+        { name: "Kids Polka Dot Cotton Top", link: "shop.html?category=kids&type=top-wear" },
+        { name: "Kids Striped Polo Shirt", link: "shop.html?category=kids&type=top-wear" },
+        { name: "Kids Cartoon Print T-Shirt", link: "shop.html?category=kids&type=top-wear" },
+        { name: "Kids Padded Winter Jacket", link: "shop.html?category=kids&type=top-wear" },
+        { name: "Kids Sleeveless Summer Vest", link: "shop.html?category=kids&type=top-wear" },
+        { name: "Kids Full Sleeve Graphic Tee", link: "shop.html?category=kids&type=top-wear" },
+        { name: "Kids Casual Flannel Shirt", link: "shop.html?category=kids&type=top-wear" },
+
+        // --- KIDS BOTTOM WEAR ---
+        { name: "Kids Elastic Waist Jeans", link: "shop.html?category=kids&type=bottom-wear" },
+        { name: "Kids Cotton Cargo Shorts", link: "shop.html?category=kids&type=bottom-wear" },
+        { name: "Kids Printed Leggings", link: "shop.html?category=kids&type=bottom-wear" },
+        { name: "Kids Fleece Joggers", link: "shop.html?category=kids&type=bottom-wear" },
+        { name: "Kids Denim Bib Overalls", link: "shop.html?category=kids&type=bottom-wear" },
+        { name: "Kids School Uniform Trousers", link: "shop.html?category=kids&type=bottom-wear" },
+        { name: "Kids Knit Shorts", link: "shop.html?category=kids&type=bottom-wear" },
+        { name: "Kids Chino Pants", link: "shop.html?category=kids&type=bottom-wear" },
+        { name: "Kids Pajama Bottoms", link: "shop.html?category=kids&type=bottom-wear" },
+        { name: "Kids Track Pants", link: "shop.html?category=kids&type=bottom-wear" },
+
+        // --- KIDS ETHNIC WEAR ---
+        { name: "Kids Kurta Pajama Set", link: "shop.html?category=kids&type=ethnic-wear" },
+        { name: "Kids Nehru Jacket for Boys", link: "shop.html?category=kids&type=ethnic-wear" },
+        { name: "Kids Ethnic Dhoti Kurta", link: "shop.html?category=kids&type=ethnic-wear" },
+        { name: "Kids Sherwani for Festivals", link: "shop.html?category=kids&type=ethnic-wear" },
+        { name: "Kids Traditional Waistcoat", link: "shop.html?category=kids&type=ethnic-wear" },
+        { name: "Kids South Indian Pattu Pavadai", link: "shop.html?category=kids&type=ethnic-wear" },
+        { name: "Kids Embroidered Ethnic Top", link: "shop.html?category=kids&type=ethnic-wear" },
+        { name: "Kids Ethnic Gown", link: "shop.html?category=kids&type=ethnic-wear" },
+        { name: "Kids Festive Kurta Set", link: "shop.html?category=kids&type=ethnic-wear" },
+        { name: "Kids Bandhgala Suit", link: "shop.html?category=kids&type=ethnic-wear" },
+
+        // --- KIDS FOOTWEAR & SPORTS ---
+        { name: "Kids Light-up Sneakers", link: "shop.html?category=kids" },
+        { name: "Kids School Black Shoes", link: "shop.html?category=kids" },
+        { name: "Kids Velcro Strap Sandals", link: "shop.html?category=kids" },
+        { name: "Kids Canvas Slip-ons", link: "shop.html?category=kids" },
+        { name: "Kids Sports Running Shoes", link: "shop.html?category=kids" },
+        { name: "Kids Cartoon Print Slippers", link: "shop.html?category=kids" },
+        { name: "Kids Winter Fur Boots", link: "shop.html?category=kids" },
+        { name: "Kids Rain Boots", link: "shop.html?category=kids" },
+        { name: "Kids Football Cleats", link: "shop.html?category=kids" },
+        { name: "Kids Ethnic Mojaris", link: "shop.html?category=kids" },
+
+        // --- ACCESSORIES (MEN & KIDS) ---
+        { name: "Men's Leather Belt", link: "shop.html?type=accessories" },
+        { name: "Men's Analog Watch", link: "shop.html?type=accessories" },
+        { name: "Men's Aviator Sunglasses", link: "shop.html?type=accessories" },
+        { name: "Men's Leather Wallet", link: "shop.html?type=accessories" },
+        { name: "Men's Woolen Beanie", link: "shop.html?type=accessories" },
+        { name: "Men's Baseball Cap", link: "shop.html?type=accessories" },
+        { name: "Men's Gym Duffle Bag", link: "shop.html?type=accessories" },
+        { name: "Men's Cotton Socks Pack", link: "shop.html?type=accessories" },
+        { name: "Kids School Backpack", link: "shop.html?type=accessories" },
+        { name: "Kids Superhero Watch", link: "shop.html?type=accessories" },
+        { name: "Kids Colorful Sunglasses", link: "shop.html?type=accessories" },
+        { name: "Kids Hair Clips and Bands", link: "shop.html?type=accessories" },
+        { name: "Kids Winter Scarf", link: "shop.html?type=accessories" },
+        { name: "Kids Lunch Box and Bottle Bag", link: "shop.html?type=accessories" },
+        { name: "Men's Laptop Messenger Bag", link: "shop.html?type=accessories" },
+        { name: "Men's Stainless Steel Watch", link: "shop.html?type=accessories" },
+        { name: "Men's Formal Tie and Pocket Square", link: "shop.html?type=accessories" },
+        { name: "Men's Leather Laptop Sleeve", link: "shop.html?type=accessories" },
+        { name: "Kids Cartoon Cap", link: "shop.html?type=accessories" },
+        { name: "Kids Protective Knee Pads", link: "shop.html?type=accessories" }
     ];
 
     if(searchInput) {
@@ -266,67 +380,74 @@ const searchInput = document.getElementById('global-search');
 const searchTrigger = document.getElementById('search-trigger');
 
 // 1. Toggle search bar on mobile when icon is clicked
-searchTrigger.addEventListener('click', () => {
-    if (window.innerWidth <= 768) {
-        searchInput.classList.toggle('active');
-        if (searchInput.classList.contains('active')) {
-            searchInput.focus();
+if(searchTrigger){
+    searchTrigger.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+            searchInput.classList.toggle('active');
+            if (searchInput.classList.contains('active')) {
+                searchInput.focus();
+            }
+        } else {
+            // Desktop logic: trigger search
+            performSearch(searchInput.value);
         }
-    } else {
-        // Desktop logic: trigger search
-        performSearch(searchInput.value);
-    }
-});
+    });
+}
 
 // 2. Handle "Enter" key for both Desktop & Mobile
-searchInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        performSearch(searchInput.value);
-    }
-});
+if(searchInput){
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            performSearch(searchInput.value);
+        }
+    });
+}
 
 function performSearch(query) {
     if (query.trim() !== "") {
         console.log("Searching for:", query);
-        // Add your search redirect or logic here
-        // window.location.href = `/search?q=${query}`;
+        window.location.href = `shop.html?search=${query}`;
     }
 }
 window.addEventListener('DOMContentLoaded', () => {
     const intro = document.getElementById('intro-screen');
-
-    setTimeout(() => {
-        intro.classList.add('fade-out');
-        
-        // Remove from DOM after transition finishes so it doesn't block clicks
+    if(intro){
         setTimeout(() => {
-            intro.style.display = 'none';
-        }, 800); 
-        
-    }, 3000); // 3000ms = 3 seconds
+            intro.classList.add('fade-out');
+            
+            // Remove from DOM after transition finishes so it doesn't block clicks
+            setTimeout(() => {
+                intro.style.display = 'none';
+            }, 800); 
+            
+        }, 3000); // 3000ms = 3 seconds
+    }
 });
 window.addEventListener('load', () => {
     const intro = document.getElementById('intro-screen');
-    
-    setTimeout(() => {
-        intro.classList.add('intro-exit');
-        
-        // Browser se element hatane ke liye taaki clicks block na hon
+    if(intro){
         setTimeout(() => {
-            intro.style.display = 'none';
-        }, 1000); 
-    }, 3000); // 3 Second ka wait
+            intro.classList.add('intro-exit');
+            
+            // Browser se element hatane ke liye taaki clicks block na hon
+            setTimeout(() => {
+                intro.style.display = 'none';
+            }, 1000); 
+        }, 3000); // 3 Second ka wait
+    }
 });
 window.addEventListener('load', () => {
-    setTimeout(() => {
-        const intro = document.getElementById('intro-screen');
-        intro.style.transition = "transform 1.2s cubic-bezier(0.7, 0, 0.3, 1)";
-        intro.style.transform = "translateY(-100%)"; // Screen upar slide hogi
-        
+    const intro = document.getElementById('intro-screen');
+    if(intro){
         setTimeout(() => {
-            intro.style.display = 'none';
-        }, 1200);
-    }, 3000);
+            intro.style.transition = "transform 1.2s cubic-bezier(0.7, 0, 0.3, 1)";
+            intro.style.transform = "translateY(-100%)"; // Screen upar slide hogi
+            
+            setTimeout(() => {
+                intro.style.display = 'none';
+            }, 1200);
+        }, 3000);
+    }
 });
 // =========================================
 //  DIRECT BUY / INSTANT CHECKOUT
@@ -382,23 +503,70 @@ function renderPage() {
     const crumbEl = document.getElementById('p-name-crumb');
     if(crumbEl) crumbEl.innerText = currentProduct.name;
 }
-function buyNowDirectly(event, id, name, price, img) {
-    // Ye line card ke redirect ko rokne ke liye hai
-    event.stopPropagation(); 
+// -----------------------------------------
+    //  SECTION A: MOBILE SIDEBAR & MENU (FIXED)
+    // -----------------------------------------
 
-    // Instant cart object banana
-    const quickBuyItem = {
-        id: String(id),
-        name: name,
-        price: parseInt(price),
-        image: img,
-        size: "M", // Default size set kar di hai
-        quantity: 1
+    // Function to close sidebar
+    const closeSidebar = () => {
+        if (sidebar) {
+            sidebar.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Scroll vapas chalu
+        }
     };
 
-    // Cart ko update karna (Purana cart clear karke sirf ye item)
-    localStorage.setItem('myCart', JSON.stringify([quickBuyItem]));
+    // 1. Open Menu
+    if (hamburgerBtn && sidebar) {
+        hamburgerBtn.addEventListener('click', () => {
+            sidebar.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        });
+    }
 
-    // Seedha checkout page par bhejna
-    window.location.href = 'checkout.html';
+    // 2. Close Menu (Cross icon par click)
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeSidebar);
+    }
+
+    // 3. FIXED: Menu ke kisi bhi link par click ho toh menu band ho jaye
+    const menuLinks = document.querySelectorAll('#sidebar-menu a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Agar link dropdown header nahi hai, toh menu band kar do
+            if (!link.classList.contains('dropdown-header')) {
+                closeSidebar();
+            }
+        });
+    });
+
+    // 4. Outside click par band karne ke liye (Optional but Pro)
+    document.addEventListener('click', (e) => {
+        if (sidebar && sidebar.classList.contains('active')) {
+            if (!sidebar.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                closeSidebar();
+            }
+        }
+    });
+    // --- SECTION B: MOBILE SEARCH DIRECT FIX ---
+
+if (searchTrigger) {
+    searchTrigger.onclick = function(e) {
+        console.log("Search Icon Clicked!"); // Agar ye console mein dikhe, matlab button clickable hai
+        
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            
+            // Search input ko toggle karo
+            if (searchInput) {
+                searchInput.classList.toggle('active');
+                
+                if (searchInput.classList.contains('active')) {
+                    searchInput.focus();
+                    console.log("Search Bar Opened");
+                } else {
+                    console.log("Search Bar Closed");
+                }
+            }
+        }
+    };
 }
