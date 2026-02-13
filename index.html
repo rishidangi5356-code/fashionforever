@@ -68,7 +68,14 @@
                 <li><a href="shop.html?category=kids&type=footwear">Bags & Footwear</a></li>
             </ul>
         </li>
-        
+
+        <div class="nav-search">
+          <div class="search-box" id="searchBox">
+            <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off" />
+            <i class="search-icon fas fa-search"></i>
+          </div>
+          <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
         <li><a href="shop.html?type=accessories">ACCESSORIES (ALL)</a></li>
         <li><a href="orders.html">MY ORDERS</a></li>
         <li><a href="profile.html">PROFILE</a></li>
@@ -139,18 +146,29 @@
         </div>
 
         <div class="nav-right">
-            
-       
-
-            <a href="profile.html" class="icon-link"><i class="far fa-user"></i></a>
-            
-            <a href="cart.html" class="cart-link">
-                <i class="fas fa-shopping-bag"></i> 
-                <span id="cart-count">0</span>
-            </a>
-        </div>
-
+    <div class="desktop-search-container" style="position: relative;"> 
+        <form action="shop.html" method="GET" class="desktop-search-form">
+            <input type="text" name="query" id="desktopSearchInput" placeholder="Search jeans, shirts..." autocomplete="off" required>
+            <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+        </form>
+        <div class="desktop-search-suggestions" id="desktopSearchSuggestions"></div>
     </div>
+
+    <div class="mobile-search-wrapper" id="mobileSearchTrigger">
+        <form action="shop.html" method="GET" class="mobile-mini-form">
+            <input type="text" name="query" id="mobileSearchInputNav" placeholder="Search..." autocomplete="off">
+            <button type="submit" class="mini-search-icon"><i class="fas fa-search"></i></button>
+        </form>
+        <div id="mobileSearchSuggestionsNav" class="mobile-suggestions-dropdown"></div>
+    </div>
+
+    <a href="profile.html" class="icon-link"><i class="far fa-user"></i></a>
+    
+    <a href="cart.html" class="cart-link">
+        <i class="fas fa-shopping-bag"></i> 
+        <span id="cart-count">0</span>
+    </a>
+</div>
 </header>
 <section class="hero">
     
@@ -694,7 +712,7 @@
                     <a href="https://wa.me/918349865079" target="_blank" aria-label="WhatsApp">
                         <i class="fab fa-whatsapp"></i>
                     </a>
-                    <a href="tel:+918839697440" aria-label="Phone">
+                    <a href="tel:+910883965079" aria-label="Phone">
                         <i class="fas fa-phone-alt"></i>
                     </a>
                 </div>
